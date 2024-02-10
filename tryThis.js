@@ -1,5 +1,6 @@
-let tab = [1, 2, 7, 3];
-const nale = "Firas";
-// const chars = ...tab;
-
-console.log(...tab);
+let a = 5;
+let b = 2;
+const sum = (x, y) => {
+  return x + y;
+};
+console.log(sum(a, b));
