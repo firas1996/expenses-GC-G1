@@ -1,10 +1,23 @@
-import React from "react";
+import "./Filter.css";
 
-const Filter = () => {
+const Filter = ({ years, setSelectedYear, selectedYear }) => {
+  const handelChange = (event) => {
+    setSelectedYear(event.target.value);
+  };
   return (
-    <div>
+    <div className="filter filter__control">
       <label>Filter By Year</label>
-      <select></select>
+      {/* return to this in the end !!! */}
+      <select value={selectedYear} onChange={handelChange}>
+        <option value="All">All</option>
+        {years.map((item) => {
+          return (
+            <option key={item} value={item}>
+              {item}
+            </option>
+          );
+        })}
+      </select>
     </div>
   );
 };

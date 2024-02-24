@@ -5,7 +5,7 @@ const ChartBar = ({ month, value, max, total }) => {
   if (max > 0) {
     x = Math.round((value / max) * 100) + "%";
   }
-  console.log(x);
+  // console.log(x);
   return (
     <div className="chart-bar">
       <div className="chart-bar__inner">
