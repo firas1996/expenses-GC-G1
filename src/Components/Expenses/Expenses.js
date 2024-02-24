@@ -5,7 +5,7 @@ import ChartData from "./Chart/ChartData";
 const Expenses = ({ expensesData }) => {
   return (
     <div className="expenses">
-      <ChartData />
+      <ChartData expensesData={expensesData} />
       {expensesData.map((expense) => {
         return (
           <ExpenseItem
