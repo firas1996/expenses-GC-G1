@@ -12,16 +12,20 @@ const AddNewExpense = () => {
   });
   const titleChangeHandler = (event) => {
     // setTitle(event.target.value);
-    setInputs({ title: event.target.value });
+    // setInputs({ ...inputs, title: event.target.value });
+    setInputs((prevState) => {
+      return { ...prevState, title: event.target.value };
+    });
   };
   const priceChangeHandler = (event) => {
     // setPrice(event.target.value);
-    setInputs({ title: event.target.value });
+    setInputs({ ...inputs, price: event.target.value });
   };
   const dateChangeHandler = (event) => {
     // setDate(event.target.value);
-    setInputs({ title: event.target.value });
+    setInputs({ ...inputs, date: event.target.value });
   };
+  const inputsChangeHandler = (event) => {};
   const submitForm = (event) => {
     event.preventDefault();
     console.log(inputs);
@@ -42,7 +46,7 @@ const AddNewExpense = () => {
               required
               placeholder="Title"
               value={inputs.title}
-              onChange={titleChangeHandler}
+              onChange={inputsChangeHandler}
             />
           </div>
           <div className="new-expense__control">
@@ -54,7 +58,7 @@ const AddNewExpense = () => {
               min="0"
               step="0.01"
               value={inputs.price}
-              onChange={priceChangeHandler}
+              onChange={inputsChangeHandler}
             />
           </div>
           <div className="new-expense__control">
@@ -65,7 +69,7 @@ const AddNewExpense = () => {
               min="2022-01-01"
               max="2026-12-31"
               value={inputs.date}
-              onChange={dateChangeHandler}
+              onChange={inputsChangeHandler}
             />
           </div>
         </div>
