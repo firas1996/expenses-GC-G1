@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./AddNewExpense.css";
 
-const AddNewExpense = () => {
+const AddNewExpense = ({ getNewExpense }) => {
   // const [title, setTitle] = useState("");
   // const [price, setPrice] = useState("");
   // const [date, setDate] = useState("");
@@ -25,10 +25,20 @@ const AddNewExpense = () => {
     // setDate(event.target.value);
     setInputs({ ...inputs, date: event.target.value });
   };
-  const inputsChangeHandler = (event) => {};
+  const inputsChangeHandler = ({ target }) => {
+    const { name, value } = target;
+    setInputs((prevState) => {
+      return { ...prevState, [name]: value };
+    });
+  };
   const submitForm = (event) => {
     event.preventDefault();
-    console.log(inputs);
+    getNewExpense(inputs);
+    setInputs({
+      title: "",
+      price: "",
+      date: "",
+    });
     // console.log(title);
     // console.log(price);
     // console.log(date);
@@ -45,6 +55,7 @@ const AddNewExpense = () => {
             <input
               required
               placeholder="Title"
+              name="title"
               value={inputs.title}
               onChange={inputsChangeHandler}
             />
@@ -57,6 +68,7 @@ const AddNewExpense = () => {
               placeholder="Price"
               min="0"
               step="0.01"
+              name="price"
               value={inputs.price}
               onChange={inputsChangeHandler}
             />
@@ -68,6 +80,7 @@ const AddNewExpense = () => {
               type="date"
               min="2022-01-01"
               max="2026-12-31"
+              name="date"
               value={inputs.date}
               onChange={inputsChangeHandler}
             />

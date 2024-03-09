@@ -1,7 +1,8 @@
+import { useState } from "react";
 import Expenses from "./Components/Expenses/Expenses";
 import AddNewExpense from "./Components/NewExpense/AddNewExpense";
 
-const expensesData = [
+const defaultExpensesData = [
   {
     id: 1,
     title: "New TV",
@@ -29,9 +30,13 @@ const expensesData = [
 ];
 
 function App() {
+  const [expensesData, setExpensesData] = useState(defaultExpensesData);
+  const getNewExpense = (data) => {
+    setExpensesData([data, ...expensesData]);
+  };
   return (
     <div>
-      <AddNewExpense />
+      <AddNewExpense getNewExpense={getNewExpense} />
       <Expenses expensesData={expensesData} />
     </div>
   );
